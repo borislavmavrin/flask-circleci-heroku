@@ -54,10 +54,8 @@ jobs:
         - run:
             name: Build and push Docker image to Heroku
             command: |
-              sudo curl https://cli-assets.heroku.com/install.sh | sh
-              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a grasbergerm-simple-flask-app web
-              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a grasbergerm-simple-flask-app web
+              docker tag borislavv/test borislavv/test:latest
+              docker push borislavv/test:tagname
 workflows:
   lint-test-build-deploy:
     jobs: 
@@ -65,7 +63,7 @@ workflows:
       - test
       - docker/publish:
           deploy: false
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          image: borislavv/test
       - deploy:
           requires:
             - lint
