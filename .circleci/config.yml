@@ -52,7 +52,7 @@ jobs:
       steps:
         - checkout
         - run:
-            name: Build and push Docker image to Dockerhub
+            name: Build and push Docker image to Dockerhub and deploy to render
             command: |
               docker build -t borislavv/test:latest .
               echo $DH_PSW | docker login --username $DH_USER --password-stdin
