@@ -54,8 +54,8 @@ jobs:
         - run:
             name: Build and push Docker image to Dockerhub
             command: |
+              docker build -t borislavv/test:latest .
               echo $DH_PSW | docker login --username $DH_USER --password-stdin
-              docker tag borislavv/test borislavv/test:latest
               docker push borislavv/test:latest
 workflows:
   lint-test-build-deploy:
