@@ -52,7 +52,7 @@ jobs:
       steps:
         - checkout
         - run:
-            name: Build and push Docker image to Heroku
+            name: Build and push Docker image to Dockerhub
             command: |
               echo $DH_PSW | docker login --username $DH_USER --password-stdin
               docker tag borislavv/test borislavv/test:latest
