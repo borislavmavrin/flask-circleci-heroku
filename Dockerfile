@@ -2,6 +2,8 @@ FROM python:alpine3.11
 
 ENV PORT=5000
 
+EXPOSE $PORT
+
 WORKDIR /simple-flask-app
 
 COPY . .
