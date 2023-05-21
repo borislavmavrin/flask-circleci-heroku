@@ -57,6 +57,7 @@ jobs:
               docker build -t borislavv/test:latest .
               echo $DH_PSW | docker login --username $DH_USER --password-stdin
               docker push borislavv/test:latest
+              curl -X POST ${DEPLOY_URL}&imgURL=docker.io%borislavv%test%3Alatest
 workflows:
   lint-test-build-deploy:
     jobs: 
